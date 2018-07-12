@@ -1,7 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
-
+const port = process.env.PORT || 8080;
  var app = express();
 
  hbs.registerPartials(__dirname+'/views/partials');
@@ -16,7 +16,7 @@ const fs = require('fs');
 
    console.log(log);
    fs.appendFile('server.log',log +'\n', (err)=>{if(err) {console.log('unable to find server.log file'); }});
-l   next();
+   next();
  });
 
  app.use((req, res,next)=>{
@@ -56,6 +56,6 @@ l   next();
 app.get('/bad', (req,res) =>{
   res.send({errorStatus : 'Code: 404 ERROR!'});
 });
-app.listen(8080, ()=>{
-console.log('server is up and running');
+app.listen(port, ()=>{
+console.log(`server is up and running on port: ${port}`);
 });
