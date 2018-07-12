@@ -43,15 +43,18 @@ const port = process.env.PORT || 8080;
    });
  });
 
-
-
-
-
  app.get('/about', (req, res) => {
   res.render('about.hbs',{
     pageTitle: 'About Page',
   });
 });
+
+app.get('/projects', (req, res) => {
+ res.render('projects.hbs',{
+   pageTitle: 'Projects',
+ });
+});
+
 
 app.get('/bad', (req,res) =>{
   res.send({errorStatus : 'Code: 404 ERROR!'});
